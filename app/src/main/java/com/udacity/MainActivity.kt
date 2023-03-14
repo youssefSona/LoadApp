@@ -17,16 +17,11 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.udacity.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
 
     private var downloadID: Long = 0
     private lateinit var binding: ActivityMainBinding
-
-    //    private lateinit var notificationManager: NotificationManager
     private lateinit var pendingIntent: PendingIntent
-//    private lateinit var action: NotificationCompat.Action
-
     private var selectedLink: String? = null
     private var selectedName: String? = null
 
@@ -37,23 +32,15 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         setContentView(binding.root)
 
-//        registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
-
         // Download Button
-        binding.dBtn.setLoadingButtonState(ButtonState.Completed)
-        binding.dBtn.setOnClickListener {
-            binding.dBtn.setLoadingButtonState(ButtonState.Loading)
+        binding.contentMain.dBtn.setLoadingButtonState(ButtonState.Completed)
+        binding.contentMain.dBtn.setOnClickListener {
+            binding.contentMain.dBtn.setLoadingButtonState(ButtonState.Loading)
             download()
         }
         // End of Download Button
 
     } // End of Main()
-
-//    private val receiver = object : BroadcastReceiver() {
-//        override fun onReceive(context: Context?, intent: Intent?) {
-//            val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
-//        }
-//    }
 
     @SuppressLint("Range", "UnspecifiedImmutableFlag", "MissingPermission")
     private fun download() {
@@ -143,14 +130,7 @@ class MainActivity : AppCompatActivity() {
         }
         val myApp = applicationContext as MyApplication
         myApp.selectedName = selectedName
-//        binding.temppp.text = selectedName   // testing
     } // end of onRadioButtonClicked
-
-//    companion object {
-//        private const val URL =
-//            "https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter/archive/master.zip"
-//        private const val CHANNEL_ID = "channelId"
-//    }
 
 }
 
